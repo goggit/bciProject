@@ -153,13 +153,13 @@ describe('item operations', function() {
         });
     });
   });
-  //Delete an item
-  describe('Delete an item', function(){
+  //Deleting an item/not authorised
+  describe('Delete an item when not authorised', function(){
     it('should delete an item', async function(){
         await chai.request('http://localhost:3000')
             .delete('/items/1')
             .then(response => {
-                assert.strictEqual(response.status, 200)
+                assert.strictEqual(response.status, 401)
             })
             .catch(error => {
                 assert.fail(error)
@@ -167,6 +167,7 @@ describe('item operations', function() {
 
     })
 });
+
 //search items based on location/find
 describe('search item based on location', function() {
   it('Should find array of items', async function() {
